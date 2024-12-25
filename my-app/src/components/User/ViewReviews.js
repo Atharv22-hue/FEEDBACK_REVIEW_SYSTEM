@@ -9,7 +9,7 @@ const ViewReviews = () => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const { data } = await axios.get("http://localhost:5000/api/feedback");
+        const { data } = await axios.get("https://feedback-review-system-2.onrender.com");
         console.log("Fetched Data:", data);
         setReviews(data.reviews || []);
         setAverageRating(data.averageRating || 0);
