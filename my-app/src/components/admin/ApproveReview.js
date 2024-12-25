@@ -10,7 +10,7 @@ const ApproveReview = () => {
     const fetchFeedbacks = async () => {
       try {
         const response = await axios.get(
-          process.env.REACT_APP_API_URL || "http://localhost:5000/api/feedback"
+          process.env.REACT_APP_API_URL || "https://feedback-review-system-2.onrender.com"
         );
         console.log("Fetched Feedbacks:", response.data);
         setFeedbacks(response.data || []);
