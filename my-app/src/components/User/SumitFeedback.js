@@ -21,19 +21,23 @@ const SubmitFeedback = () => {
     <form 
       onSubmit={handleSubmit} 
       style={{
-        maxWidth: "400px",
-        margin: "0 auto",
+        maxWidth: "90%",
+        margin: "10px auto",
         padding: "20px",
         border: "1px solid #ccc",
         borderRadius: "8px",
         backgroundColor: "#f9f9f9",
+        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+        fontFamily: "Arial, sans-serif",
       }}
     >
-      <h3 style={{ textAlign: "center", marginBottom: "20px" }}>Submit Feedback</h3>
+      <h3 style={{ textAlign: "center", marginBottom: "20px", color: "#333" }}>
+        Submit Feedback
+      </h3>
       
       <div style={{ marginBottom: "15px" }}>
-        <label htmlFor="rating" style={{ display: "block", marginBottom: "5px" }}>
-          Rating:
+        <label htmlFor="rating" style={{ display: "block", marginBottom: "5px", fontSize: "14px" }}>
+          Rating (1-5):
         </label>
         <input
           id="rating"
@@ -45,7 +49,8 @@ const SubmitFeedback = () => {
           required
           style={{
             width: "100%",
-            padding: "8px",
+            padding: "10px",
+            fontSize: "14px",
             border: "1px solid #ccc",
             borderRadius: "4px",
           }}
@@ -53,7 +58,7 @@ const SubmitFeedback = () => {
       </div>
 
       <div style={{ marginBottom: "15px" }}>
-        <label htmlFor="comment" style={{ display: "block", marginBottom: "5px" }}>
+        <label htmlFor="comment" style={{ display: "block", marginBottom: "5px", fontSize: "14px" }}>
           Comment:
         </label>
         <textarea
@@ -64,9 +69,11 @@ const SubmitFeedback = () => {
           rows="4"
           style={{
             width: "100%",
-            padding: "8px",
+            padding: "10px",
+            fontSize: "14px",
             border: "1px solid #ccc",
             borderRadius: "4px",
+            resize: "none",
           }}
         />
       </div>
@@ -76,12 +83,12 @@ const SubmitFeedback = () => {
         style={{
           display: "block",
           width: "100%",
-          padding: "10px",
+          padding: "12px",
+          fontSize: "16px",
           backgroundColor: "#007BFF",
           color: "#fff",
           border: "none",
           borderRadius: "4px",
-          fontSize: "16px",
           cursor: "pointer",
         }}
       >
