@@ -24,9 +24,9 @@ const ViewReviews = () => {
   return (
     <div
       style={{
-        maxWidth: "600px",
+        maxWidth: "90%",
         margin: "20px auto",
-        padding: "20px",
+        padding: "15px",
         border: "1px solid #ccc",
         borderRadius: "8px",
         backgroundColor: "#f9f9f9",
@@ -38,10 +38,13 @@ const ViewReviews = () => {
           textAlign: "center",
           marginBottom: "20px",
           color: "#333",
+          fontSize: "18px",
         }}
       >
         Average Rating:{" "}
-        <span style={{ color: "#007BFF" }}>{averageRating}</span>
+        <span style={{ color: "#007BFF", fontWeight: "bold" }}>
+          {averageRating}
+        </span>
       </h3>
 
       {error ? (
@@ -59,6 +62,7 @@ const ViewReviews = () => {
           style={{
             listStyleType: "none",
             padding: 0,
+            margin: 0,
           }}
         >
           {reviews.map((review) => (
@@ -68,9 +72,10 @@ const ViewReviews = () => {
                 marginBottom: "15px",
                 padding: "10px",
                 border: "1px solid #ddd",
-                borderRadius: "4px",
+                borderRadius: "8px",
                 backgroundColor: "#fff",
                 boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+                wordBreak: "break-word",
               }}
             >
               <p style={{ margin: "5px 0" }}>
@@ -100,3 +105,4 @@ const ViewReviews = () => {
 };
 
 export default ViewReviews;
+
