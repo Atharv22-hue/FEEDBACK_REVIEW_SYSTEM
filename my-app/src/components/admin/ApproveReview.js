@@ -12,10 +12,8 @@ const ApproveReview = () => {
         const response = await axios.get(
           process.env.REACT_APP_API_URL || "https://feedback-review-system-2.onrender.com"
         );
-        console.log("Fetched Feedbacks:", response.data);
         setFeedbacks(response.data || []);
       } catch (error) {
-        console.error("Error fetching feedbacks:", error);
         setError("Failed to load feedbacks. Please try again later.");
       } finally {
         setLoading(false);
@@ -26,29 +24,25 @@ const ApproveReview = () => {
 
   const handleApprove = async (id) => {
     try {
-      const response = await axios.patch(`http://localhost:5000/api/feedback/${id}`, {
+      await axios.patch(`http://localhost:5000/api/feedback/${id}`, {
         status: "approved",
       });
-      console.log(response.data);
       setFeedbacks((prev) =>
         prev.map((feedback) =>
           feedback._id === id ? { ...feedback, status: "approved" } : feedback
         )
       );
     } catch (error) {
-      console.error("Error approving feedback:", error.response?.data || error.message);
-      setError(error.response?.data?.message || "Failed to approve feedback.");
+      setError("Failed to approve feedback.");
     }
   };
 
   const handleDelete = async (id) => {
     try {
-      const response = await axios.delete(`http://localhost:5000/api/feedback/${id}`);
-      console.log(response.data);
+      await axios.delete(`http://localhost:5000/api/feedback/${id}`);
       setFeedbacks((prev) => prev.filter((feedback) => feedback._id !== id));
     } catch (error) {
-      console.error("Error deleting feedback:", error.response?.data || error.message);
-      setError(error.response?.data?.message || "Failed to delete feedback.");
+      setError("Failed to delete feedback.");
     }
   };
 
@@ -64,13 +58,7 @@ const ApproveReview = () => {
         fontFamily: "Arial, sans-serif",
       }}
     >
-      <h2
-        style={{
-          textAlign: "center",
-          marginBottom: "20px",
-          color: "#333",
-        }}
-      >
+      <h2 style={{ textAlign: "center", marginBottom: "20px", color: "#333" }}>
         Manage Feedbacks
       </h2>
 
@@ -93,6 +81,9 @@ const ApproveReview = () => {
               borderRadius: "8px",
               backgroundColor: "#fff",
               boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+              display: "flex",
+              flexDirection: "column",
+              gap: "10px",
             }}
           >
             <p style={{ margin: "5px 0" }}>
@@ -101,16 +92,22 @@ const ApproveReview = () => {
             <p style={{ margin: "5px 0" }}>
               <strong>Rating:</strong> {feedback.rating}
             </p>
-            <p style={{ margin: "5px 0", color: feedback.status === "approved" ? "green" : "orange" }}>
+            <p
+              style={{
+                margin: "5px 0",
+                color: feedback.status === "approved" ? "green" : "orange",
+              }}
+            >
               <strong>Status:</strong>{" "}
               {feedback.status === "approved" ? "Approved" : "Pending"}
             </p>
-            <div style={{ display: "flex", gap: "10px" }}>
+            <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
               {feedback.status !== "approved" && (
                 <button
                   onClick={() => handleApprove(feedback._id)}
                   style={{
                     padding: "10px",
+                    flex: "1",
                     backgroundColor: "#28a745",
                     color: "#fff",
                     border: "none",
@@ -125,6 +122,7 @@ const ApproveReview = () => {
                 onClick={() => handleDelete(feedback._id)}
                 style={{
                   padding: "10px",
+                  flex: "1",
                   backgroundColor: "#dc3545",
                   color: "#fff",
                   border: "none",
@@ -138,13 +136,7 @@ const ApproveReview = () => {
           </div>
         ))
       ) : (
-        <p
-          style={{
-            textAlign: "center",
-            fontSize: "16px",
-            color: "#666",
-          }}
-        >
+        <p style={{ textAlign: "center", fontSize: "16px", color: "#666" }}>
           No feedbacks available. Please check back later.
         </p>
       )}
