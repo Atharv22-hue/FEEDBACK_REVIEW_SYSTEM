@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import SubmitFeedback from './components/User/SubmitFeedback';
 
 const ViewReviews = () => {
   const [reviews, setReviews] = useState([]);
@@ -9,7 +10,7 @@ const ViewReviews = () => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const { data } = await axios.get("https://feedback-review-system-2.onrender.com");
+        const { data } = await axios.get("http://localhost:5000/api/feedback");
         console.log("Fetched Data:", data);
         setReviews(data.reviews || []);
         setAverageRating(data.averageRating || 0);
@@ -24,9 +25,9 @@ const ViewReviews = () => {
   return (
     <div
       style={{
-        maxWidth: "90%",
+        maxWidth: "600px",
         margin: "20px auto",
-        padding: "15px",
+        padding: "20px",
         border: "1px solid #ccc",
         borderRadius: "8px",
         backgroundColor: "#f9f9f9",
@@ -38,13 +39,10 @@ const ViewReviews = () => {
           textAlign: "center",
           marginBottom: "20px",
           color: "#333",
-          fontSize: "18px",
         }}
       >
         Average Rating:{" "}
-        <span style={{ color: "#007BFF", fontWeight: "bold" }}>
-          {averageRating}
-        </span>
+        <span style={{ color: "#007BFF" }}>{averageRating}</span>
       </h3>
 
       {error ? (
@@ -62,7 +60,6 @@ const ViewReviews = () => {
           style={{
             listStyleType: "none",
             padding: 0,
-            margin: 0,
           }}
         >
           {reviews.map((review) => (
@@ -72,10 +69,9 @@ const ViewReviews = () => {
                 marginBottom: "15px",
                 padding: "10px",
                 border: "1px solid #ddd",
-                borderRadius: "8px",
+                borderRadius: "4px",
                 backgroundColor: "#fff",
                 boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-                wordBreak: "break-word",
               }}
             >
               <p style={{ margin: "5px 0" }}>
@@ -105,4 +101,3 @@ const ViewReviews = () => {
 };
 
 export default ViewReviews;
-
