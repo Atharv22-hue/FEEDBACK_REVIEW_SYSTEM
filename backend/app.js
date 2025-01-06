@@ -9,10 +9,10 @@ app.use(express.json());
 
 // Connect to MongoDB
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on http://localhost:${8000}`);
 });
 const cors = require("cors");
 app.use(cors({
@@ -20,7 +20,11 @@ app.use(cors({
   methods: ["GET", "POST", "PUT", "DELETE","PATCH"],
   allowedHeaders: ["Content-Type", "Authorization"],
 }));
-
+app.post('/api/feedback', (req, res) => {
+  const feedback = req.body;
+  // Process feedback...
+  res.status(200).json({ message: 'Feedback received' });
+});
 mongoose.connect('mongodb+srv://pant:tTEBIp7nEP7de3PE@atharv.09g0rli.mongodb.net/', {
   //  useNewUrlParser: true, // REMOVE this line
 //    useUnifiedTopology: true // REMOVE this line
@@ -42,3 +46,4 @@ app.use((req, res, next) => {
 });
 
 module.exports = app;
+
