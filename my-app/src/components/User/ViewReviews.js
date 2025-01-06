@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import SubmitFeedback from './components/User/SubmitFeedback';
+
 
 const ViewReviews = () => {
   const [reviews, setReviews] = useState([]);
