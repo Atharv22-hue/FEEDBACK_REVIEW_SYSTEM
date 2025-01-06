@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Common/header";
-import SubmitFeedback from './components/User/SubmitFeedback.js';
+import SubmitFeedback from './components/User/SumitFeedback.js';
 import ViewReviews from "./components/User/ViewReviews";
 import ApproveReview from "./components/admin/ApproveReview";
 
