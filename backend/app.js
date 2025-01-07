@@ -9,6 +9,12 @@ app.use(express.json());
 
 // Connect to MongoDB
 
+app.get('/api/feedback', (req, res) => {
+    res.send("Feedback endpoint");
+});
+app.get('/', (req, res) => {
+    res.send("Server is running!");
+});
 
 
 app.listen(5000, () => {
