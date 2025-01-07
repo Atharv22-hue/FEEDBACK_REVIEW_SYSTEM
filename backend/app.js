@@ -15,6 +15,10 @@ app.get('/api/feedback', (req, res) => {
 app.get('/', (req, res) => {
     res.send("Server is running!");
 });
+app.get('/', (req, res) => {
+    res.send("Server is live and running!");
+});
+
 
 
 app.listen(5000, () => {
