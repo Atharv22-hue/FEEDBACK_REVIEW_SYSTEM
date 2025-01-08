@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://feedback-review-system-66.onrender.com",
+  baseURL: "https://feedback-review-system-78.onrender.com",
 });
 
 export const fetchFeedbacks = () => axios.get(api);
