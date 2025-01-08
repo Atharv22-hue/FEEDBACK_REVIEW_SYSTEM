@@ -9,16 +9,6 @@ app.use(express.json());
 
 // Connect to MongoDB
 
-
-app.get('/', (req, res) => {
-    res.send("Server is running!");
-});
-app.get('/', (req, res) => {
-    res.send("Server is live and running!");
-});
-
-
-
 app.listen(5000, () => {
   console.log(`Server is running on http://localhost:${5000}`);
 });
